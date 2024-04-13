@@ -26,8 +26,7 @@ export default function App() {
                     <Link onClick={() => SaveChangeLenguaje('es')} href={'../es'} className="w-full inline-block flex justify-between items-center gap-2">
                         ES
                         <img src="es.svg" alt="Español" className="w-8" />
-                    </Link>
-                </DropdownItem>
+            <DropdownMenu variant="faded" aria-label="Static Actions" className="w-max flex items-start justify-start">
                 <DropdownItem key="copy">
                     <Link onClick={() => SaveChangeLenguaje('en')} href={'../en'} className="w-full inline-block flex justify-between items-center gap-2">
                         EN
