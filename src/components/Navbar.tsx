@@ -1,11 +1,21 @@
 "use client"
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
 import Traductor from "./Traductor";
+import GetLang from '@/components/GetLang';
+
 
 export default function NavbarComponent() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+    const [dictionary, setDictionary] = React.useState({});
+
+    useEffect(() => {
+        GetLang().then((data) => {
+            setDictionary(data);
+        });
+    }, []);
 
     const menuItems = [
         "Get Started",
@@ -43,7 +53,7 @@ export default function NavbarComponent() {
                 </NavbarBrand>
                 <NavbarItem>
                     <Link className="text-text" href="#">
-                        Enterprise
+                        {dictionary.navbar1}
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
@@ -79,7 +89,7 @@ export default function NavbarComponent() {
                             className="w-full text-text"
                             href="#"
                             size="lg"
-                            
+
                         >
                             {item}
                         </Link>
