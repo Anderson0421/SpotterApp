@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Traductor() {
 
     return (
-        <Dropdown backdrop="blur">
+        <Dropdown backdrop="blur" className="w-full">
             <DropdownTrigger>
                 <Button
                     variant="flat"
@@ -19,14 +19,14 @@ export default function Traductor() {
                     <span>ES</span>
                 </Button>
             </DropdownTrigger>
-            <DropdownMenu variant="faded" aria-label="Static Actions">
+            <DropdownMenu variant="faded" aria-label="Static Actions" className="w-max flex items-start justify-start">
                 <DropdownItem>
-                    <Link href="../en" className="text-secondary">
+                    <Link href="../en" className="text-secondary w-full">
                         English
                     </Link>
                 </DropdownItem>
-                <DropdownItem >
-                    <Link href="../es" className="text-secondary">
+                <DropdownItem>
+                    <Link href="../es" className="text-secondary w-full">
                         Español
                     </Link>
                 </DropdownItem>

@@ -6,7 +6,9 @@ export default async function Home({ params: { lang } }: { params: { lang: strin
   return (
     <>
       <NavbarComponent />
-      <section id='home' className='h-screen  mx-auto container max-md:flex-col mt-16 max-sm:mt-5 w-full  justify-between max-md:px-10 max-sm:px-5 max-xl:px-10 max-lg:px-4 px-32 flex'>
+      <section id='home' className='mt-20 mx-auto container items-center max-md:flex-col max-sm:mt-5 w-full justify-between max-md:px-10 max-sm:px-5 max-xl:px-10 max-lg:px-4 px-32 flex
+      bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]
+      '>
         <div className='w-1/2 max-md:w-full'>
           <h1 className='animate-fade-in-right animate-delay-0 text-white text-5xl max-lg:text-4xl max-sm:text-3xl font-semibold text-pretty leading-tight'>
             {dictionary.title}
@@ -24,39 +26,6 @@ export default async function Home({ params: { lang } }: { params: { lang: strin
           <img src='spotter2.jpg' alt='car' className='w-3/4 max-md:mt-10 max-md:max-w-md max-sm:max-w-sm max-md:w-full h-max rounded-lg' />
         </div>
       </section>
-      <div
-        className='relative w-full  hide-scrollbar h-screen overflow-auto snap-y snap-mandatory
-      bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]
-      '
-      >
-        <div className='snap-center h-screen w-full justify-center gap-20 flex  px-20 items-center text-9xl'>
-          <img src='spotter3.jpg' alt='car' className='w-3/5  max-w-sm max-md:mt-10 max-md:max-w-md max-sm:max-w-sm max-md:w-full h-max rounded-lg' />
-          <div className='w-1/2'>
-            <h1 className='text-white text-5xl max-lg:text-4xl max-sm:text-3xl font-semibold text-pretty leading-tight'>
-              Descubre la forma más rápida de encontrar estacionamiento
-            </h1>
-            <p className='text-white text-medium mt-2  leading-relaxed'>
-              Con Spotter, encontrar un lugar para estacionar tu auto nunca fue tan fácil.
-              Gracias a nuestra tecnología, podrás encontrar un lugar para estacionar tu auto en cuestión de segundos.
-              ¡No pierdas más tiempo buscando estacionamiento!
-            </p>
-          </div>
-        </div>
-        <div className='snap-center h-screen w-full justify-center gap-10 flex px-20 items-center text-9xl'>
-          <div className='w-1/2'>
-            <h1 className='text-white text-5xl max-lg:text-4xl max-sm:text-3xl font-semibold text-pretty leading-tight'>
-              Gestiona tu estacionamiento de forma rápida y sencilla
-            </h1>
-            <p className='text-white text-medium mt-2  leading-relaxed'>
-              Nuestro sistema de gestión de estacionamiento te permitirá
-              administrar tus espacios en tiempo real, gracias a nuestra
-              tecnología de vanguardia. ¡No pierdas más tiempo!
-            </p>
-          </div>
-          <img src='spotter4.jpg' alt='car' className='w-3/5 max-w-sm max-md:mt-10 max-md:max-w-md max-sm:max-w-sm max-md:w-full h-max rounded-lg' />
-
-        </div>
-      </div>
     </>
   );
 }
