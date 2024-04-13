@@ -1,9 +1,6 @@
-import NavbarComponent from '../../components/Navbar'
-export default async function Home({ params: { lang } }: { params: { lang: string } }) {
+import NavbarComponent from '../components/Navbar'
 
-  const dictionary = await import(`@/app/dictionaries/${lang}.json`)
-    .then((module) => module.default)
-
+export default async function Home() {
   return (
     <>
       <NavbarComponent />
@@ -12,14 +9,14 @@ export default async function Home({ params: { lang } }: { params: { lang: strin
       '>
         <div className='w-1/2 max-md:w-full'>
           <h1 className='animate-fade-in-right animate-delay-0 text-white text-5xl max-lg:text-4xl max-sm:text-3xl font-semibold text-pretty leading-tight'>
-            {dictionary.title}
+            Estaciona tu auto de forma rápida y sencilla con
             <span className="font-extrabold">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-white"> SP</span>
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-secondary">OTTER</span>
             </span>
           </h1>
           <p className='animate-fade-in-right animate-delay-200 text-white text-medium mt-2  leading-relaxed'>
-            {dictionary.descriptionHome}
+            Con Spotter, encontrar un lugar para estacionar tu auto nunca fue tan fácil. Gracias a nuestra tecnología, podrás encontrar un lugar para estacionar tu auto en cuestión de segundos. ¡No pierdas más tiempo buscando estacionamiento!
           </p>
         </div>
         <div className='w-3/5 animate-fade-in-down animate-delay-200 max-md:w-full flex justify-end max-md:justify-center'>
