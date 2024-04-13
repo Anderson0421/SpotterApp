@@ -1,8 +1,9 @@
 import NavbarComponent from '../../components/Navbar'
-
 export default async function Home({ params: { lang } }: { params: { lang: string } }) {
+
   const dictionary = await import(`@/app/dictionaries/${lang}.json`)
     .then((module) => module.default)
+
   return (
     <>
       <NavbarComponent />
