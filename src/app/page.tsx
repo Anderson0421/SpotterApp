@@ -1,4 +1,6 @@
 import { BackgroundBeams } from "@/ui/background-beams";
+import Image from 'next/image'
+
 
 export default async function Home() {
   return (
@@ -17,8 +19,7 @@ export default async function Home() {
           </p>
         </div>
         <div className='w-3/5 animate-fade-in-down animate-delay-200 max-md:w-full flex justify-end max-md:justify-center'>
-          {/* Vamos a cambiarlo por la etiqueta Image */}
-          <img src='spotter2.jpg' alt='car' className='aspect-square w-3/4 max-md:mt-10 max-md:max-w-md max-sm:max-w-sm max-md:w-full h-max rounded-lg' />
+          <Image width={500} height={500} src='/spotter2.jpg' alt='SpotterApp-Image' className='aspect-square w-3/4 max-md:mt-10 max-md:max-w-md max-sm:max-w-sm max-md:w-full h-max rounded-lg' />
         </div>
       </section>
       <BackgroundBeams />
