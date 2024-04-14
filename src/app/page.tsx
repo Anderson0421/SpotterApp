@@ -1,4 +1,3 @@
-import { BackgroundBeams } from "@/ui/background-beams";
 import Image from 'next/image'
 
 
@@ -22,7 +21,6 @@ export default async function Home() {
           <Image width={500} height={500} src='/spotter2.jpg' alt='SpotterApp-Image' className='aspect-square w-3/4 max-md:mt-10 max-md:max-w-md max-sm:max-w-sm max-md:w-full h-max rounded-lg' />
         </div>
       </section>
-      <BackgroundBeams />
     </>
   );
 }
