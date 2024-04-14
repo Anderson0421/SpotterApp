@@ -1,21 +1,12 @@
 "use client"
 
-import React, { useEffect } from "react";
-import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
-import Traductor from "./Traductor";
-import GetLang from '@/components/GetLang';
-
+import { useState } from "react";
+import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Button } from "@nextui-org/react";
+import Link from "next/link";
 
 export default function NavbarComponent() {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const [dictionary, setDictionary] = React.useState({});
-
-    useEffect(() => {
-        GetLang().then((data) => {
-            setDictionary(data);
-        });
-    }, []);
 
     const menuItems = [
         "Get Started",
@@ -28,36 +19,34 @@ export default function NavbarComponent() {
 
     return (
         <Navbar
-            isBordered
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            className="bg-midnight"
-        >
-            <NavbarContent className="sm:hidden text-primary" justify="start">
+            className="bg-transparent" >
+            <NavbarContent className="sm:hidden text-primary bg-transparent" justify="start">
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
             </NavbarContent>
 
             <NavbarContent className="sm:hidden pr-3" justify="center">
                 <NavbarBrand>
-                    <p className="font-bold text-text">
+                    <Link href="../" className="font-bold text-text">
                         SPOTTER
-                    </p>
+                    </Link>
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarBrand>
-                    <p className="font-bold text-text">
+                    <Link href="../" className="font-bold text-text">
                         SPOTTER
-                    </p>
+                    </Link>
                 </NavbarBrand>
                 <NavbarItem>
                     <Link className="text-text" href="#">
-                        {dictionary.navbar1}
+                        Enterprise
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link href="#" className="text-text">
+                    <Link href="../blog" className="text-text">
                         Blog
                     </Link>
                 </NavbarItem>
@@ -76,9 +65,6 @@ export default function NavbarComponent() {
                     <Link className="text-midnight bg-primary px-4 py-2 rounded-lg text-sm" href="#" >
                         Sign Up
                     </Link>
-                </NavbarItem>
-                <NavbarItem className="hidden lg:flex pr-2">
-                    <Traductor />
                 </NavbarItem>
             </NavbarContent>
 
