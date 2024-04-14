@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: black;
-}
-
-/* Ocultar el scrollbar solo para el efecto de mandatory */
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  scrollbar-width: none;
-}
-
 /* Estilo personalizado para el scrollbar */
 ::-webkit-scrollbar {
   width: 15px;
