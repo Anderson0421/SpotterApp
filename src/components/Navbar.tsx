@@ -74,8 +74,6 @@ export default function NavbarComponent() {
                         <Link
                             className="w-full text-text"
                             href="#"
-                            size="lg"
-
                         >
                             {item}
                         </Link>
