@@ -14,7 +14,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'text': "#d4f1f7",
+        'text': "#E8FBFF",
         'midnight': '#02080A',
         'primary': "#85d3e9",
         'button': "#b043dd",
@@ -22,6 +22,7 @@ const config: Config = {
       },
     },
   },
+  darkMode: 'class',
   plugins: [nextui(), animations],
 };
 export default config;
