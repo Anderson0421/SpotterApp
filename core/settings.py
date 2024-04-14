@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Empresa',
     'Estacionamiento',
+    'Post',
     'rest_framework',
 ]
 
@@ -136,3 +137,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
+AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')
+AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
+
+AZURE_SAS_TOKEN=os.environ.get('AZURE_SAS_TOKEN')
+
+MEDIA_URL ='https://%s.blob.core.windows.net/%s/' % (AZURE_ACCOUNT_NAME, AZURE_CONTAINER)
+MEDIA_ROOT='http://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/'
