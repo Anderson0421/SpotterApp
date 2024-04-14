@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react";
-import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
-
+import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Button } from "@nextui-org/react";
+import Link from "next/link";
 
 export default function NavbarComponent() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,12 +19,10 @@ export default function NavbarComponent() {
 
     return (
         <Navbar
-            isBordered
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            className="bg-midnight"
-        >
-            <NavbarContent className="sm:hidden text-primary" justify="start">
+            className="bg-transparent" >
+            <NavbarContent className="sm:hidden text-primary bg-transparent" justify="start">
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
             </NavbarContent>
 
@@ -48,7 +46,7 @@ export default function NavbarComponent() {
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link href="#" className="text-text">
+                    <Link href="../blog" className="text-text">
                         Blog
                     </Link>
                 </NavbarItem>

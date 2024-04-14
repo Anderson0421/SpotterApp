@@ -1,12 +1,9 @@
-import NavbarComponent from '../components/Navbar'
+import { BackgroundBeams } from "@/ui/background-beams";
 
 export default async function Home() {
   return (
     <>
-      <NavbarComponent />
-      <section id='home' className='mt-20 mx-auto container items-center max-md:flex-col max-sm:mt-5 w-full justify-between max-md:px-10 max-sm:px-5 max-xl:px-10 max-lg:px-4 px-32 flex
-      bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]
-      '>
+      <section id='home' className='mt-20 mx-auto container items-center max-md:flex-col max-sm:mt-5 w-full justify-between max-md:px-10 max-sm:px-5 max-xl:px-10 max-lg:px-4 px-32 flex'>
         <div className='w-1/2 max-md:w-full'>
           <h1 className='animate-fade-in-right animate-delay-0 text-white text-5xl max-lg:text-4xl max-sm:text-3xl font-semibold text-pretty leading-tight'>
             Estaciona tu auto de forma rápida y sencilla con
@@ -24,6 +21,7 @@ export default async function Home() {
           <img src='spotter2.jpg' alt='car' className='w-3/4 max-md:mt-10 max-md:max-w-md max-sm:max-w-sm max-md:w-full h-max rounded-lg' />
         </div>
       </section>
+      <BackgroundBeams />
     </>
   );
 }
