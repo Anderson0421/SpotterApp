@@ -4,3 +4,6 @@ djangorestframework>=3.13.0,<3.16.0
 django-environ>=0.5.0,<1.0.0
 django-storages[azure]==1.14.2
 pillow
+whitenoise
+django-cors-headers
+gunicorn
