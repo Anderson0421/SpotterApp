@@ -11,7 +11,7 @@ const inter = Poppins({
 
 export const metadata: Metadata = {
   title: "Spotter",
-  description: "",
+  description: "Spotter es una aplicación que te ayuda a encontrar estacionamiento de forma rápida y sencilla. Ademas de gestionar tu estacionamiento de forma eficiente.",
 };
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
