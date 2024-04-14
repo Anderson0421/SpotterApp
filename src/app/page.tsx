@@ -18,7 +18,7 @@ export default async function Home() {
           </p>
         </div>
         <div className='w-3/5 animate-fade-in-down animate-delay-200 max-md:w-full flex justify-end max-md:justify-center'>
-          <Image width={500} height={500} src='/spotter2.jpg' alt='SpotterApp-Image' className='aspect-square w-3/4 max-md:mt-10 max-md:max-w-md max-sm:max-w-sm max-md:w-full h-max rounded-lg' />
+          <Image loading='eager' width={500} height={500} src='/spotter2.jpg' alt='SpotterApp-Image' className='aspect-square w-3/4 max-md:mt-10 max-md:max-w-md max-sm:max-w-sm max-md:w-full h-max rounded-lg' />
         </div>
       </section>
     </>
