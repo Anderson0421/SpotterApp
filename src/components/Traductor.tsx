@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
+import { Dropdown,  DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import Link from "next/link";
 
 function SaveChangeLenguaje(idioma: string) {
@@ -10,7 +10,7 @@ function SaveChangeLenguaje(idioma: string) {
 
 export default function App() {
     return (
-        <Dropdown backdrop="opaque">
+        <Dropdown backdrop="blur">
             <DropdownTrigger>
                 <Button className="text-text"
                     variant="bordered"
