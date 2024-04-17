@@ -1,7 +1,11 @@
 import type { Config } from "tailwindcss";
 const { nextui } = require("@nextui-org/react");
 import animations from '@midudev/tailwind-animations'
-
+const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config: Config = {
   content: [
@@ -14,7 +18,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'text': "#d4f1f7",
+        'text': "#E8FBFF",
         'midnight': '#02080A',
         'primary': "#85d3e9",
         'button': "#b043dd",
@@ -22,6 +26,18 @@ const config: Config = {
       },
     },
   },
+  darkMode: 'class',
   plugins: [nextui(), animations],
 };
+// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+ 
+  addBase({
+    ":root": newVars,
+  });
+}
 export default config;

@@ -1,30 +1,29 @@
 "use client"
 
 import { useState } from "react";
-import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
-
+import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Button } from "@nextui-org/react";
+import Link from "next/link";
 
 export default function NavbarComponent() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
-    const menuItems = [
-        "Get Started",
-        "Get Started",
-        "Get Started",
-        "Get Started",
-        "Get Started",
-        "Get Started",
-    ];
+    interface ItemInterface {
+        [key: string]: string;
+    };
+
+    const menuItems: ItemInterface = {
+        "Enterprises": '../enterprises',
+        "Blog": '../blog',
+        "Docs": '../docs',
+    };
 
     return (
         <Navbar
-            isBordered
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            className="bg-midnight"
-        >
-            <NavbarContent className="sm:hidden text-primary" justify="start">
+            className="bg-transparent" >
+            <NavbarContent className="sm:hidden text-text" justify="start">
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
             </NavbarContent>
 
@@ -48,13 +47,13 @@ export default function NavbarComponent() {
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link href="#" className="text-text">
+                    <Link href="../blog" className="text-text">
                         Blog
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link className="text-text" href="#">
-                        Get Started
+                    <Link className="text-text" href="../docs">
+                        Docs
                     </Link>
                 </NavbarItem>
             </NavbarContent>
@@ -71,18 +70,17 @@ export default function NavbarComponent() {
             </NavbarContent>
 
             <NavbarMenu className="bg-transparent">
-                {menuItems.map((item, index) => (
-                    <NavbarMenuItem key={`${item}-${index}`}>
-                        <Link
-                            className="w-full text-text"
-                            href="#"
-                            size="lg"
-
-                        >
-                            {item}
-                        </Link>
-                    </NavbarMenuItem>
-                ))}
+                {
+                    Object.keys(menuItems).map((key) => {
+                        return (
+                            <NavbarMenuItem key={key}>
+                                <Link href={menuItems[key]} className="text-text">
+                                    {key}
+                                </Link>
+                            </NavbarMenuItem>
+                        );
+                    })
+                }
             </NavbarMenu>
         </Navbar>
     );
