@@ -1,8 +1,11 @@
 import Image from 'next/image'
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export default async function Home() {
   return (
     <>
+      <Navbar />
       <section id='home' className='mt-16 mx-auto text-white container items-center max-md:flex-col max-sm:mt-5 w-full justify-between max-md:px-10 max-sm:px-5 max-xl:px-10 max-lg:px-4 px-32 flex'>
         <div className='w-1/2 max-md:w-full'>
           <h1 className='animate-fade-in-right text-5xl max-lg:text-4xl max-sm:text-3xl font-semibold leading-tight'>
@@ -20,6 +23,8 @@ export default async function Home() {
           <Image width={400} height={400} src='/spotter2.webp' alt='SpotterApp-Image' className='aspect-square w-3/4 max-md:mt-10 max-md:max-w-md max-sm:max-w-sm max-md:w-full rounded-lg' />
         </div>
       </section>
+      <Footer />
+
     </>
   );
 }
