@@ -15,6 +15,8 @@ const config: Config = {
       colors: {
         'text': "#E8FBFF",
         'midnight': '#02080A',
+        'night': '#02043E',
+        'light': '#85D3E9',
         'primary': "#85d3e9",
         'button': "#b043dd",
         'secondary': "#491c97",
