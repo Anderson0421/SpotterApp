@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'Empresa',
     'Estacionamiento',
     'Post',
+    'Plaza',
     'rest_framework',
     'corsheaders',
 ]
