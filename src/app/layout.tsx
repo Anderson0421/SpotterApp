@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
-import Navbar from '@/components/Navbar';
 
 const inter = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -18,9 +16,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="en" className={inter.className}>
       <body className="bg-black">
-        <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );
