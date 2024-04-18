@@ -51,6 +51,10 @@ export const DashboardItems: LinkItem[] = [
         href: '/dashboard/enterprises/'
     },
     {
+        name: 'Updates',
+        href: '/dashboard/enterprises/updates'
+    },
+    {
         name: 'Parking lots',
         href: '#'
     },
