@@ -1,5 +1,3 @@
-import DataTableEmprise from "./DataTable"
-
 const DataAPIFETCH = async () => {
     const response = await fetch('https://spotterapp.onrender.com/empresa/options/')
     const data = await response.json()
@@ -12,7 +10,9 @@ export default async function EnterprisesList() {
 
     return (
         <>
-            <DataTableEmprise data={DataEnterprises} />
+            <section className="ml-28">
+                Aca ira la tabla
+            </section>
         </>
     )
 }
