@@ -29,7 +29,7 @@ export default function Navbar() {
 
     return (
         <>
-            <div className="flex justify-end items-center h-16 w-full">
+            <div className="flex justify-end items-center h-16 w-full max-sm:hidden">
                 <ul className="p-5 flex items-center justify-between gap-6">
                     <button className="text-gray-700">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.3} stroke="currentColor" className="w-5 h-5">
