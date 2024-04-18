@@ -1,4 +1,5 @@
 import DataTablePersonalizado from "./Datatable"
+import { EnterpriseType } from '@/types/type';
 
 const DataAPIFETCH = async () => {
     const response = await fetch('https://spotterapp.onrender.com/empresa/options/')
@@ -10,7 +11,16 @@ export default async function EnterprisesList() {
 
     const DataEnterprises = await DataAPIFETCH()
 
-    const workspacesColumns = [
+    type Column = {
+        header: string;
+        accessorKey: keyof EnterpriseType; // Restringe el tipo a los nombres de las propiedades de EnterpriseType
+        meta: {
+            align: string;
+        };
+    };
+    
+
+    const workspacesColumns: Column[] = [
         {
             header: 'ID',
             accessorKey: 'id',
