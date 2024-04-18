@@ -7,3 +7,18 @@ export type Post = {
     PostPortada: string
     PostFechaCreacion: string
 }
+
+
+export type EnterpriseType = {
+    id: number
+    EmpNombre: string
+    EmpDireccionPrincipal: string
+    EmpRUC: string
+    EmpCorreo: string
+    EmpTelefono: string
+    EmpNombreCreador: string
+    EmpEstado: string | boolean
+    EmpDNICreador?: string
+    EmpDescripcion? : string
+    EmpAsunto? : string
+}

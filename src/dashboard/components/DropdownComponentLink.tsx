@@ -31,7 +31,7 @@ export const DropdownLinkSidebar: React.FC<PropsItemsDropdown> = ({ isHovered, I
                     ''
                 )
             }
-            <button onClick={() => handleOpenClickPages()} className={`text-white  ${isHovered ? 'bg-gray-300/30 mt-3 p-3' : ''} w-full  rounded-lg flex justify-between items-center gap-3 text-xs p-2 duration-200 transition-all`}>
+            <button onClick={() => handleOpenClickPages()} className={`text-white  ${isHovered ? 'bg-gray-800/90 mt-3 p-3' : ''} w-full  rounded-lg flex justify-between items-center gap-3 text-xs p-2 duration-200 transition-all`}>
                 {
                     IconSVG(isHovered)
                 }

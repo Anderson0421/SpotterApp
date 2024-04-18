@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Estilo personalizado para el scrollbar */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 15px;
 }
 
@@ -15,6 +14,17 @@
   background: #85d3e9;
   border-radius: 10px;
   border: 5px solid #868686;
+} */
+
+.custom-scrollbar-aside::-webkit-scrollbar-thumb {
+  border-radius: 1px;
+  border: 5px solid #868686;
+}
+
+.custom-scrollbar-aside::-webkit-scrollbar {
+  width: 5px;
+}
+
 }
 
 .custom-scrollbar-aside::-webkit-scrollbar {
