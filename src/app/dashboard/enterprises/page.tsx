@@ -13,6 +13,5 @@ export default function EnterprisesHome() {
                 <EnterprisesList />
             </Suspense>
         </section>
-
     )
 }
