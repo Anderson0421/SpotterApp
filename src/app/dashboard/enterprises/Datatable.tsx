@@ -12,11 +12,12 @@ function classNames(...classes: (string | boolean | undefined)[]) {
 
 type Column = {
     header: string;
-    accessorKey: string;
+    accessorKey: keyof EnterpriseType; // Restringe el tipo a los nombres de las propiedades de EnterpriseType
     meta: {
         align: string;
     };
 };
+
 
 const Button = ({ onClick, disabled, children }: {
     onClick: () => void;
@@ -47,8 +48,9 @@ export default function DataTablePersonalizado({ data, columns }: DatatableProps
     const mappedData = useMemo(() => {
         return data.map(item => {
             const mappedItem: Record<string, any> = {};
-            columns.forEach(column => {
+            columns.forEach((column: Column) => {
                 mappedItem[column.accessorKey] = item[column.accessorKey];
+                ;
             });
             return mappedItem;
         });
@@ -67,6 +69,15 @@ export default function DataTablePersonalizado({ data, columns }: DatatableProps
         },
     });
 
+
+    type ColumnDef<TData, TOriginal> = {
+        header: string;
+        accessorKey: keyof TData;
+        // Otros campos
+    };
+    type CustomColumnDef<TData> = ColumnDef<TData, unknown> & {
+        accessorKey: keyof TData;
+    };
     return (
         <>
             <Table>
@@ -97,12 +108,15 @@ export default function DataTablePersonalizado({ data, columns }: DatatableProps
                             {row.getVisibleCells().map((cell) => (
                                 <TableCell key={cell.id}
                                     className={classNames((cell.column.columnDef.meta as { align: string })?.align)} >
-                                    {cell.column.columnDef.accessorKey === 'EmpEstado'
-                                        ? row.original.EmpEstado
-                                            ? <span className="text-green-500">Activo</span>
-                                            : <span className="text-red-500">Inactivo</span>
-                                        : flexRender(cell.column.columnDef.cell, cell.getContext())
-                                    }
+                                    {(cell.column.columnDef as CustomColumnDef<EnterpriseType>).accessorKey === 'EmpEstado' ? (
+                                        row.original.EmpEstado ? (
+                                            <span className="text-green-500">Activo</span>
+                                        ) : (
+                                            <span className="text-red-500">Inactivo</span>
+                                        )
+                                    ) : (
+                                        flexRender(cell.column.columnDef.cell, cell.getContext())
+                                    )}
                                 </TableCell>
                             ))}
                             <TableCell className='flex gap-3'>
