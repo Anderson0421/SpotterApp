@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'Plaza',
     'rest_framework',
     'corsheaders',
+    'Categoria',
 ]
 
 MIDDLEWARE = [

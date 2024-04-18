@@ -22,4 +22,5 @@ urlpatterns = [
     path('estacionamiento/',include('Estacionamiento.urls')),
     path('plaza/',include('Plaza.urls')),
     path('post/',include('Post.urls')),
+    path('categoria/',include('Categoria.urls')),
 ]
