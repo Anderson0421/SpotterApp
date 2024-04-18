@@ -3,7 +3,7 @@ from .models import Plaza,CreacionPlaza,ActualizacionPlaza,EliminacionPlaza
 
 class PlazaSerializer(serializers.ModelSerializer):
     class Meta:
-        unique_together = (("PlazaNumero", "PlazaEstUbicacion"),)
+        unique_together = (("PlazaNumero", "PlazaEstId"),)
         model = Plaza
         fields = '__all__'
         

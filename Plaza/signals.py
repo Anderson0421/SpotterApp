@@ -5,10 +5,9 @@ from .models import Plaza,CreacionPlaza,ActualizacionPlaza,EliminacionPlaza
 @receiver(post_save, sender=Plaza)
 def TriggerCreacion(sender, instance, created, **kwargs):
     if created:
-        CreacionPlaza.objects.create(PlazaNumero=instance.PlazaNumero,PlazaEstUbicacion=instance.PlazaEstUbicacion)
+        CreacionPlaza.objects.create(PlazaNumero=instance.PlazaNumero,PlazaEstId=instance.PlazaEstId.id)
       
       
-            
 @receiver(pre_save, sender=Plaza)
 def TriggerPreActualizacion(sender, instance, **kwargs):
     try:
@@ -28,7 +27,7 @@ def TriggerPostActualizacion(sender, instance, created, **kwargs):
         if updated_fields:
             actualizacion = ActualizacionPlaza(
                 PlazaNumero=instance.PlazaNumero,
-                PlazaEstUbicacion = instance.PlazaEstUbicacion,
+                PlazaEstId = instance.PlazaEstId.id,
                 PlazaEstado=f"Updated to {instance.PlazaEstado}"
             )
             actualizacion.save()
@@ -38,5 +37,5 @@ def TriggerPostActualizacion(sender, instance, created, **kwargs):
         
 @receiver(pre_delete, sender=Plaza)      
 def TriggerEliminacion(sender, instance, **kwargs):
-    EliminacionPlaza.objects.create(PlazaNumero=instance.PlazaNumero,PlazaEstUbicacion=instance.PlazaEstUbicacion)
+    EliminacionPlaza.objects.create(PlazaNumero=instance.PlazaNumero,PlazaEstId=instance.PlazaEstId.id)
                

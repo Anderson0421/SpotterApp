@@ -5,7 +5,7 @@ from .models import Estacionamiento,CreacionEstacionamiento,ActualizacionEstacio
 @receiver(post_save, sender=Estacionamiento)
 def TriggerCreacion(sender, instance, created, **kwargs):
     if created:
-        CreacionEstacionamiento.objects.create(EstUbicacion=instance.EstUbicacion)
+        CreacionEstacionamiento.objects.create(EstId=instance.id,EstUbicacion=instance.EstUbicacion)
             
 @receiver(pre_save, sender=Estacionamiento)
 def TriggerPreActualizacion(sender, instance, **kwargs):
@@ -25,6 +25,7 @@ def TriggerPostActualizacion(sender, instance, created, **kwargs):
         updated_fields = getattr(instance, '_updated_fields', [])
         if updated_fields:
             actualizacion = ActualizacionEstacionamiento(
+                EstId=instance.id,
                 EstUbicacion=instance.EstUbicacion,
                 EstModificacion=", ".join(updated_fields)
             )
@@ -33,5 +34,5 @@ def TriggerPostActualizacion(sender, instance, created, **kwargs):
         
 @receiver(pre_delete, sender=Estacionamiento)      
 def TriggerEliminacion(sender, instance, **kwargs):
-    EliminacionEstacionamiento.objects.create(EstUbicacion=instance.EstUbicacion)
+    EliminacionEstacionamiento.objects.create(EstId=instance.id,EstUbicacion=instance.EstUbicacion)
                

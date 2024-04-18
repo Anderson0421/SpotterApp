@@ -5,7 +5,7 @@ from .models import Empresa,CreacionEmpresa,ActualizacionEmpresa,EliminacionEmpr
 @receiver(post_save, sender=Empresa)
 def TriggerCreacion(sender, instance, created, **kwargs):
     if created:
-        CreacionEmpresa.objects.create(EmpNombre=instance.EmpNombre)
+        CreacionEmpresa.objects.create(EmpId=instance.id,EmpNombre=instance.EmpNombre)
             
 @receiver(pre_save, sender=Empresa)
 def TriggerPreActualizacion(sender, instance, **kwargs):
@@ -25,6 +25,7 @@ def TriggerPostActualizacion(sender, instance, created, **kwargs):
         updated_fields = getattr(instance, '_updated_fields', [])
         if updated_fields:
             actualizacion = ActualizacionEmpresa(
+                EmpId=instance.id,
                 EmpNombre=instance.EmpNombre,
                 EmpModificacion=", ".join(updated_fields)
             )
@@ -33,5 +34,5 @@ def TriggerPostActualizacion(sender, instance, created, **kwargs):
         
 @receiver(pre_delete, sender=Empresa)      
 def TriggerEliminacion(sender, instance, **kwargs):
-    EliminacionEmpresa.objects.create(EmpNombre=instance.EmpNombre)
+    EliminacionEmpresa.objects.create(EmpId=instance.id,EmpNombre=instance.EmpNombre)
                

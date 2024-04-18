@@ -15,12 +15,14 @@ class Empresa(models.Model):
         return self.EmpNombre
     
 class CreacionEmpresa(models.Model):
+    EmpId = models.IntegerField(default=1)
     EmpNombre = models.CharField(max_length=100)
     EmpFechaCreacion = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"Creacion de {self.EmpNombre}"
     
 class ActualizacionEmpresa(models.Model):
+    EmpId = models.IntegerField(default=1)
     EmpNombre = models.CharField(max_length=100)
     EmpModificacion = models.TextField(default="")
     EmpFechaActualizacion = models.DateTimeField(auto_now_add=True)
@@ -28,6 +30,7 @@ class ActualizacionEmpresa(models.Model):
         return f"Actualizacion de {self.EmpNombre}"
 
 class EliminacionEmpresa(models.Model):
+    EmpId = models.IntegerField(default=1)
     EmpNombre = models.CharField(max_length=100)
     EmpFechaEliminacion = models.DateTimeField(auto_now_add=True)
     def __str__(self):

@@ -3,20 +3,20 @@ from Estacionamiento.models import Estacionamiento
 class Plaza(models.Model):
     PlazaNumero = models.IntegerField()
     PlazaEstado =  models.BooleanField(default=True)
-    PlazaEstUbicacion = models.ForeignKey(Estacionamiento, on_delete=models.CASCADE,to_field='EstUbicacion',db_column='PlazaEstUbicacion')
+    PlazaEstId = models.ForeignKey(Estacionamiento, on_delete=models.CASCADE,to_field='id',db_column='PlazaEstId',default=1)
     def __str__(self):
-        return self.PlazaNumero
+        return f"{self.PlazaNumero} de Est. n.{self.PlazaEstId}"
     
 class CreacionPlaza(models.Model):
     PlazaNumero = models.IntegerField()
-    PlazaEstUbicacion = models.CharField(max_length=100)
+    PlazaEstId = models.IntegerField(default=1)
     PlazaFechaCreacion = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"Creacion de {self.PlazaNumero}"
     
 class ActualizacionPlaza(models.Model):
     PlazaNumero = models.IntegerField()
-    PlazaEstUbicacion = models.CharField(max_length=100)
+    PlazaEstId = models.IntegerField(default=1)
     PlazaEstado = models.CharField(max_length=20)
     PlazaFechaActualizacion = models.DateTimeField(auto_now_add=True)
     def __str__(self):
@@ -24,7 +24,7 @@ class ActualizacionPlaza(models.Model):
 
 class EliminacionPlaza(models.Model):
     PlazaNumero = models.IntegerField()
-    PlazaEstUbicacion = models.CharField(max_length=100)
+    PlazaEstId = models.IntegerField(default=1)
     PlazaFechaEliminacion = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"Eliminacion de {self.PlazaNumero}"    
