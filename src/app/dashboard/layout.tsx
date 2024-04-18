@@ -18,12 +18,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="en" className={inter.className}>
-            <body>
-                <section className="flex bg-white">
+            <body className="bg-black">
+                <section className="h-screen w-full flex bg-white">
                     <Sidebar />
-                    <div className="custom-scrollbar-aside h-screen w-full overflow-y-scroll">
+                    <div className="w-full">
                         <Navbar />
-                        <div>
+                        <div className="p-3">
                             {children}
                         </div>
                     </div>
