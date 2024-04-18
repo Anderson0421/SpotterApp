@@ -45,7 +45,7 @@ export default function Sidebar() {
                 }
             </button>
             <aside
-                className={`h-screen max-sm:${isOpenMin ? '' : 'hidden'} absolute z-10 overflow-x-hidden transition-all custom-scrollbar-aside duration-300 bg-night ${isHovered ? 'w-48 overflow-y-scroll' : 'w-20'}`}
+                className={`h-screen absolute z-10 overflow-x-hidden transition-all custom-scrollbar-aside duration-300 bg-night ${isHovered ? 'w-48 overflow-y-scroll' : 'w-20'} ${isOpenMin ? '' : 'max-sm:hidden'}`}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
