@@ -25,6 +25,10 @@
   width: 5px;
 }
 
+.custom-scrollbar-aside::-webkit-scrollbar {
+  width: 5px;
+}
+
 .custom-scrollbar-aside::-webkit-scrollbar-track {
   background: #0e0e0e;
 }

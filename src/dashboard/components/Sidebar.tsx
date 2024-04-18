@@ -1,4 +1,5 @@
 "use client"
+
 import Image from "next/image";
 import { useState } from "react";
 import { LinksItems, LinksItemsPage, LinksItemTasks, DashboardItems } from "@/dashboard/assets/SidebarItemsHome";
@@ -11,6 +12,7 @@ export default function Sidebar() {
     const [isOpenTasks, setOpenTasks] = useState(false);
     const [isOpenEnterprises, setOpenEnterprises] = useState(false);
     const [isOpenMin, setOpenMin] = useState(false);
+
 
     function handleOpenClick() {
         setIsOpen(!isOpen)
@@ -27,6 +29,12 @@ export default function Sidebar() {
     function handleOpenMin() {
         setOpenMin(!isOpenMin)
     }
+
+
+    const baseClass = 'h-screen dark:border-r-1 dark:border-gray-600 absolute z-20 overflow-x-hidden transition-all custom-scrollbar-aside duration-300 dark:bg-dashboard-third bg-night';
+    const hoverClass = isHovered ? 'w-48 overflow-y-scroll' : 'w-20';
+    const openMinClass = isOpenMin ? '' : 'max-sm:hidden';
+    const classPersoSide = `${baseClass} ${hoverClass} ${openMinClass}`;
 
     return (
         <>
@@ -45,7 +53,7 @@ export default function Sidebar() {
                 }
             </button>
             <aside
-                className={`h-screen dark:border-r-1 dark:border-gray-600 absolute z-20 overflow-x-hidden transition-all custom-scrollbar-aside duration-300 dark:bg-dashboard-third bg-night ${isHovered ? 'w-48 overflow-y-scroll' : 'w-20'} ${isOpenMin ? '' : 'max-sm:hidden'}`}
+                className={classPersoSide}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
@@ -60,9 +68,9 @@ export default function Sidebar() {
                         handleOpenClickPages={handleOpenClick}
                         isOpenPages={isOpen}
                         LinksItems={LinksItems}
-                        IconSVG={(isHovered: boolean) => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`${isHovered ? 'w-5' : 'bg-gray-800/90 dark:bg-gray-800/50 p-3 w-11'} rounded-lg `}>
+                        IconSVG={(isHovered: boolean) => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`${isHovered ? 'w-5' : 'bg-gray-800/90 dark:bg-gray-800/50 p-3 w-11'} rounded-lg `}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                        </svg>
+                        </svg>)
                         }
                     />
                     <DropdownLinkSidebar
@@ -71,9 +79,9 @@ export default function Sidebar() {
                         handleOpenClickPages={handleOpenClickEnterprises}
                         isOpenPages={isOpenEnterprises}
                         LinksItems={DashboardItems}
-                        IconSVG={(isHovered: boolean) => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`${isHovered ? 'w-5' : 'bg-gray-800/90 dark:bg-gray-800/50 p-3 w-11'} rounded-lg `}>
+                        IconSVG={(isHovered: boolean) => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`${isHovered ? 'w-5' : 'bg-gray-800/90 dark:bg-gray-800/50 p-3 w-11'} rounded-lg `}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
-                        </svg>
+                        </svg>)
 
                         }
                     />
@@ -84,9 +92,9 @@ export default function Sidebar() {
                         handleOpenClickPages={handleOpenClickPages}
                         isOpenPages={isOpenPages}
                         LinksItems={LinksItemsPage}
-                        IconSVG={(isHovered: boolean) => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`${isHovered ? 'w-5' : 'bg-gray-800/90 p-3 w-11 dark:bg-gray-800/50 '} rounded-lg `}>
+                        IconSVG={(isHovered: boolean) => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`${isHovered ? 'w-5' : 'bg-gray-800/90 p-3 w-11 dark:bg-gray-800/50 '} rounded-lg `}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
-                        </svg>
+                        </svg>)
                         }
                     />
                     <DropdownLinkSidebar
@@ -95,14 +103,12 @@ export default function Sidebar() {
                         handleOpenClickPages={handleOpenClickTasks}
                         isOpenPages={isOpenTasks}
                         LinksItems={LinksItemTasks}
-                        IconSVG={(isHovered: boolean) => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`${isHovered ? 'w-5' : 'bg-gray-800/90 p-3 w-11 dark:bg-gray-800/50 '} rounded-lg `}>
+                        IconSVG={(isHovered: boolean) => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`${isHovered ? 'w-5' : 'bg-gray-800/90 p-3 w-11 dark:bg-gray-800/50 '} rounded-lg `}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
-                        </svg>}
+                        </svg>)}
                     />
-
-
                 </div>
-            </aside >
+            </aside>
         </>
     )
 }
