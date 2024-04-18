@@ -10,7 +10,7 @@ export default async function EnterprisesList() {
 
     return (
         <>
-            <section className="ml-28">
+            <section >
                 Aca ira la tabla
             </section>
         </>
