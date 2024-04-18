@@ -21,7 +21,9 @@ const config: Config = {
         'button': "#b043dd",
         'secondary': "#491c97",
         'dashboard-primary': '#11180f',
-        'dashboard-second': '#162113'
+        'dashboard-second': '#162113',
+        'dashboard-third': '#101111',
+        'dashboard-fourth': '#181818',
       },
     },
   },

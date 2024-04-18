@@ -19,7 +19,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
     return (
         <html lang="en" className={inter.className}>
             <body>
-                <section className="flex bg-white">
+                <section className="flex bg-white dark:bg-dashboard-fourth">
                     <Sidebar />
                     <div className="custom-scrollbar-aside h-screen w-full overflow-y-scroll">
                         <Navbar />
