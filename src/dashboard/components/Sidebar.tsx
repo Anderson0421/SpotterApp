@@ -1,5 +1,4 @@
 "use client"
-
 import Image from "next/image";
 import { useState } from "react";
 import { LinksItems, LinksItemsPage, LinksItemTasks, DashboardItems } from "@/dashboard/assets/SidebarItemsHome";
@@ -38,7 +37,7 @@ export default function Sidebar() {
 
     return (
         <>
-            <button className="absolute top-5 right-4 p-2 sm:hidden rounded-lg dark:bg-gray-950/90 bg-night text-white z-20" onClick={() => handleOpenMin()}>
+            <button className="absolute top-3 right-4 p-2 sm:hidden rounded-lg dark:bg-gray-950/90 bg-night text-white z-20" onClick={() => handleOpenMin()}>
                 {
                     isOpenMin ? (
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
