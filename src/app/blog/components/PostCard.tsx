@@ -7,8 +7,8 @@ export default function PostCard(post: PostType) {
 
     return (
         <Link href="#">
-            <div className="rounded-xl border border-gray-700 flex flex-col justify-between w-full">
-                <div className="relative">
+            <div className="rounded-xl border group hover:scale-105 duration-300 transition-all border-gray-700 flex flex-col justify-between w-full">
+                <div className="relative group-hover:scale-95 group-hover:saturate-150 saturate-50 duration-300 transition-all">
                     <img src={`${post.PostPortada}?sp=racwdli&st=2024-04-14T00:13:42Z&se=2026-10-13T08:13:42Z&sv=2022-11-02&sr=c&sig=q9N9P9sev2O8erCIkIq5KN6CBT9FVoKXrWqxIyqM5HQ%3D`} alt="imagepost"
                     className="w-full h-40 object-cover rounded-t-xl" />
                 </div>
