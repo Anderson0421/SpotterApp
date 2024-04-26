@@ -2,7 +2,6 @@
 import { flexRender, getCoreRowModel, getPaginationRowModel, useReactTable, } from '@tanstack/react-table';
 import { Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow, } from '@tremor/react';
 import { useMemo } from 'react';
-import { EnterpriseType } from '@/types/type';
 import { Button as BtnNext } from "@nextui-org/react";
 import { EditIcon, TrashIcon, ViewIcon } from '@/components/icons/Icons'
 import Link from 'next/link';
@@ -10,9 +9,9 @@ function classNames(...classes: (string | boolean | undefined)[]) {
     return classes.filter(Boolean).join(' ');
 }
 
-type Column = {
+type Column<T> = {
     header: string;
-    accessorKey: keyof EnterpriseType; // Restringe el tipo a los nombres de las propiedades de EnterpriseType
+    accessorKey: keyof T;
     meta: {
         align: string;
     };
@@ -37,27 +36,28 @@ const Button = ({ onClick, disabled, children }: {
     );
 };
 
-type DatatableProps = {
-    data: EnterpriseType[];
-    columns: Column[];
+type DataTablePersonalizadoProps<T> = {
+    data: T[];
+    columns: Column<T>[];
+    linkH: string;
 };
 
-export default function DataTablePersonalizado({ data, columns }: DatatableProps) {
+
+export default function DataTablePersonalizado<T extends { id: number }>({ data, columns, linkH }: DataTablePersonalizadoProps<T>) {
     const pageSize = 8;
 
     const mappedData = useMemo(() => {
         return data.map(item => {
             const mappedItem: Record<string, any> = {};
-            columns.forEach((column: Column) => {
-                mappedItem[column.accessorKey] = item[column.accessorKey];
-                ;
+            columns.forEach((column: Column<T>) => {
+                mappedItem[column.accessorKey as string] = item[column.accessorKey];
             });
             return mappedItem;
         });
     }, [data, columns]);
 
-    const table = useReactTable({
-        data: mappedData,
+    const table = useReactTable<T>({
+        data: mappedData as T[],
         columns: columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
@@ -69,15 +69,6 @@ export default function DataTablePersonalizado({ data, columns }: DatatableProps
         },
     });
 
-
-    type ColumnDef<TData, TOriginal> = {
-        header: string;
-        accessorKey: keyof TData;
-        // Otros campos
-    };
-    type CustomColumnDef<TData> = ColumnDef<TData, unknown> & {
-        accessorKey: keyof TData;
-    };
     return (
         <>
             <Table>
@@ -108,31 +99,25 @@ export default function DataTablePersonalizado({ data, columns }: DatatableProps
                             {row.getVisibleCells().map((cell) => (
                                 <TableCell key={cell.id}
                                     className={classNames((cell.column.columnDef.meta as { align: string })?.align)} >
-                                    {(cell.column.columnDef as CustomColumnDef<EnterpriseType>).accessorKey === 'EmpEstado' ? (
-                                        row.original.EmpEstado ? (
-                                            <span className="text-green-500">Activo</span>
-                                        ) : (
-                                            <span className="text-red-500">Inactivo</span>
-                                        )
-                                    ) : (
+                                    {(
                                         flexRender(cell.column.columnDef.cell, cell.getContext())
                                     )}
                                 </TableCell>
                             ))}
                             <TableCell className='flex gap-3'>
-                                <Link href={`enterprises/edit/${row.original.id}`}>
+                                <Link href={`${linkH}/edit/${row.original.id}`}>
                                     <BtnNext className="text-xs" color='success' variant="bordered"
                                         startContent={<EditIcon iconClass={'w-5'} />}>Edit</BtnNext>
                                 </Link>
-                                <Link href={`enterprises/detail/${row.original.id}`}>
+                                <Link href={`${linkH}/detail/${row.original.id}`}>
                                     <BtnNext className="text-xs" color='warning' variant='bordered'
                                         startContent={<ViewIcon iconClass={'w-5'} />}>Detail</BtnNext>
                                 </Link>
-                                <Link href={`enterprises/${row.original.id}`}>
+                                <Link href={`${linkH}/${row.original.id}`}>
                                     <BtnNext className="text-xs" color="danger" variant="bordered"
                                         startContent={<TrashIcon iconClass={'w-5'} />} >Delete</BtnNext>
                                 </Link>
-                            </TableCell>
+                            </TableCell> 
                         </TableRow>
                     ))}
                 </TableBody>

@@ -22,7 +22,7 @@ export const LinksItems: LinkItem[] = [
 export const LinksItemsPage: LinkItem[] = [
     {
         name: 'Blog',
-        href: '#'
+        href: '/dashboard/blog'
     },
     {
         name: 'Team',

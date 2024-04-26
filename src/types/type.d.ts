@@ -1,11 +1,13 @@
 // Aca colocaremos los tipos de datos con Typescript para la app
 
-export type Post = {
+export type PostType = {
     id: number
     PostTitulo: string
     PostDescripcion: string
     PostPortada: string
+    PostContenido: string
     PostFechaCreacion: string
+    PostCategoriaID: number
 }
 
 
