@@ -65,7 +65,7 @@ export default async function EnterprisesList() {
             <h1 className="mb-10 dark:text-blue-600 z-20 text-blue-900 font-semibold text-2xl">
                 Listado de Empresas
             </h1>
-            <DataTablePersonalizado  data={DataEnterprises} columns={workspacesColumns} />
+            <DataTablePersonalizado<EnterpriseType> linkH={"enterprises"} data={DataEnterprises} columns={workspacesColumns} />
         </>
     );
 }

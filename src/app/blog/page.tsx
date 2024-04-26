@@ -1,17 +1,35 @@
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import { PostType } from '@/types/type';
+import PostCard from './components/PostCard';
+import { format } from '@formkit/tempo'
 
-export default function BackgroundBeamsDemo() {
+async function GetPosts() {
+    const res = await fetch('https://spotterapp.onrender.com/post/options/');
+    const data = await res.json();
+    return data;
+}
+
+export default async function BlogPage() {
+    const Posts: PostType[] = await GetPosts();
+    Posts.forEach(post => {
+        post.PostFechaCreacion = format(post.PostFechaCreacion).toLocaleString();
+    });
+
     return (
         <>
             <Navbar />
-            <section className="h-[40rem] w-full rounded-md bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
-                <h1 className="text-2xl text-text">
-                    Blog Page
+            <section id='blog' className="text-white mt-20 px-20 pb-32" >
+                <h1 className="font-bold text-3xl mb-5">
+                    All Posts
                 </h1>
+                <div className="grid grid-cols-3 mt-14">
+                    {
+                        Posts.map((post, index) => (
+                            <PostCard key={index} {...post} />
+                        ))
+                    }
+                </div>
             </section>
-            <Footer />
-
         </>
-    );
+    )
 }
